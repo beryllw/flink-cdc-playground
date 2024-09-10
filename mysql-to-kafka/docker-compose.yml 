@@ -21,6 +21,14 @@ services:
       KAFKA_CREATE_TOPICS: "baeldung:1:1"
     networks:
       - kafka-net
+  mysql:
+    image: debezium/example-mysql:1.1
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpw
 networks:
   kafka-net:
     driver: bridge
