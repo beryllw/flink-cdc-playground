@@ -1,0 +1,18 @@
+source:
+  type: mysql
+  name: MySQL Source
+  hostname: 127.0.0.1
+  port: 3306
+  username: admin
+  password: pass
+  tables: adb.\.*, bdb.user_table_[0-9]+, [app|web].order_\.*
+  server-id: 5401-5404
+
+sink:
+  type: kafka
+  name: Kafka Sink
+  properties.bootstrap.servers: PLAINTEXT://localhost:62510
+
+pipeline:
+  name: MySQL to Kafka Pipeline
+  parallelism: 2
