@@ -1,0 +1,19 @@
+source:
+  type: mysql
+  name: MySQL Source
+  hostname: 127.0.0.1
+  port: 3306
+  username: root
+  password: 123456
+  tables: adb.\.*
+  server-id: 5401-5404
+
+sink:
+  type: paimon
+  name: Paimon Sink
+  catalog.properties.metastore: filesystem
+  catalog.properties.warehouse: /tmp/paimon
+
+pipeline:
+  name: MySQL to Paimon Pipeline
+  parallelism: 2

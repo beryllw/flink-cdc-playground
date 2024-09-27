@@ -1,0 +1,22 @@
+source:
+  type: mysql
+  name: MySQL Source
+  hostname: 127.0.0.1
+  port: 3306
+  username: root
+  password: 123456
+  tables: adb.\.*
+  server-id: 5401-5404
+
+sink:
+  type: starrocks
+  name: StarRocks Sink
+  jdbc-url: jdbc:mysql://127.0.0.1:9030
+  load-url: 127.0.0.1:8080
+  username: root
+  password: ""
+  table.create.properties.replication_num: 1
+
+pipeline:
+  name: MySQL to Paimon Pipeline
+  parallelism: 2
